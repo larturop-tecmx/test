@@ -1,8 +1,747 @@
-<html>
-  <head>
-    <title>Lol</title>
-  </head>
-  <body>
-    <h1>Hola</h1>
-  </body>
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Luis Arturo Pérez | Software Engineer</title>
+
+  <meta
+    name="description"
+    content="Luis Arturo Pérez — Software Engineer especializado en automatización, cloud, networking, desarrollo y enseñanza de tecnología."
+  />
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1322;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.10);
+      --text: #f5f7fb;
+      --muted: #a9b2c3;
+      --primary: #6c63ff;
+      --secondary: #00c2ff;
+      --success: #39d98a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max-width: 1160px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(108, 99, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(0, 194, 255, 0.14), transparent 25%),
+        linear-gradient(180deg, #070b14 0%, #0b1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-content {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 1.2rem;
+    }
+
+    .brand span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 56px;
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(57, 217, 138, 0.25);
+      background: rgba(57, 217, 138, 0.08);
+      color: #8bf0ba;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 18px var(--success);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 28px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ffffff 0%, #9cecff 35%, #8d85ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.15rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 12px 40px rgba(84, 101, 255, 0.25);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: white;
+    }
+
+    /* PROFILE CARD */
+
+    .profile-card {
+      position: relative;
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -100px auto auto -100px;
+      width: 220px;
+      height: 220px;
+      background: rgba(108, 99, 255, 0.25);
+      filter: blur(70px);
+      border-radius: 50%;
+    }
+
+    .avatar {
+      aspect-ratio: 1;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(108, 99, 255, 0.85), rgba(0, 194, 255, 0.75));
+      display: grid;
+      place-items: center;
+      font-size: clamp(4rem, 8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::after {
+      content: "</>";
+      position: absolute;
+      right: 20px;
+      bottom: 12px;
+      font-size: 1.2rem;
+      opacity: 0.35;
+      letter-spacing: 0;
+    }
+
+    .profile-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+    }
+
+    .profile-meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 0.92rem;
+    }
+
+    .meta-item span:first-child {
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 96px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      padding: 30px;
+    }
+
+    .panel h3 {
+      margin-bottom: 14px;
+      font-size: 1.15rem;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    /* SKILLS */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #dce3ef;
+      font-size: 0.9rem;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .experience-card {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(108, 99, 255, 0.5);
+    }
+
+    .experience-card .number {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .experience-card h3 {
+      margin-top: 18px;
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .experience-card p {
+      color: var(--muted);
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 72px 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.22), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(0, 194, 255, 0.18), transparent 35%),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .cta h2 {
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 28px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 520px;
+      }
+
+      .about-grid,
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0;
+      }
+
+      h1 {
+        font-size: 3.7rem;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .panel,
+      .profile-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-content">
+      <a href="#" class="brand">LAP<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="container hero">
+
+      <div>
+        <div class="eyebrow">Disponible para crear, aprender y compartir</div>
+
+        <h1>
+          Hola, soy
+          <span class="gradient-text">Luis Arturo.</span>
+        </h1>
+
+        <p class="hero-copy">
+          Software Engineer apasionado por la tecnología, el desarrollo de software,
+          cloud, automatización y networking. Me gusta transformar ideas complejas
+          en soluciones simples y compartir lo que aprendo con otras personas.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#sobre-mi" class="btn btn-primary">
+            Conoce mi perfil
+          </a>
+
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+
+        <div class="avatar">
+          LA
+        </div>
+
+        <h2>Luis Arturo Pérez</h2>
+
+        <p>
+          Software Engineer · Technology Enthusiast · Instructor
+        </p>
+
+        <div class="profile-meta">
+          <div class="meta-item">
+            <span>Área</span>
+            <strong>Software & Cloud</strong>
+          </div>
+
+          <div class="meta-item">
+            <span>Intereses</span>
+            <strong>AI · DevOps · Networking</strong>
+          </div>
+
+          <div class="meta-item">
+            <span>Filosofía</span>
+            <strong>Learn. Build. Share.</strong>
+          </div>
+        </div>
+
+      </aside>
+
+    </header>
+
+
+    <section id="sobre-mi">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <p style="color: var(--secondary); font-weight: 800; margin-bottom: 8px;">
+              SOBRE MÍ
+            </p>
+
+            <h2>Tecnología con propósito.</h2>
+          </div>
+
+          <p>
+            Disfruto trabajar en la intersección entre ingeniería,
+            automatización, infraestructura y educación tecnológica.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <article class="panel">
+            <h3>Lo que hago</h3>
+
+            <p>
+              Desarrollo soluciones de software, automatización e infraestructura.
+              Trabajo con tecnologías modernas para conectar sistemas, simplificar
+              procesos y resolver problemas reales.
+            </p>
+          </article>
+
+          <article class="panel">
+            <h3>Tecnologías</h3>
+
+            <p>
+              Algunas de las herramientas y áreas con las que trabajo:
+            </p>
+
+            <div class="skills">
+              <span class="skill">Python</span>
+              <span class="skill">FastAPI</span>
+              <span class="skill">React</span>
+              <span class="skill">Docker</span>
+              <span class="skill">AWS</span>
+              <span class="skill">Git</span>
+              <span class="skill">Linux</span>
+              <span class="skill">Ansible</span>
+              <span class="skill">Terraform</span>
+              <span class="skill">Networking</span>
+              <span class="skill">DevOps</span>
+              <span class="skill">AI</span>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="experiencia">
+      <div class="container">
+
+        <div class="section-heading">
+
+          <div>
+            <p style="color: var(--secondary); font-weight: 800; margin-bottom: 8px;">
+              LO QUE ME MUEVE
+            </p>
+
+            <h2>Construir. Enseñar. Explorar.</h2>
+          </div>
+
+          <p>
+            Mi carrera no se limita a escribir código. Me interesa entender
+            sistemas completos y ayudar a otros a crecer con la tecnología.
+          </p>
+
+        </div>
+
+        <div class="experience-grid">
+
+          <article class="panel experience-card">
+            <div>
+              <span class="number">01 / BUILD</span>
+
+              <h3>Ingeniería</h3>
+
+              <p>
+                Diseño y desarrollo soluciones utilizando software,
+                automatización, cloud e infraestructura.
+              </p>
+            </div>
+          </article>
+
+          <article class="panel experience-card">
+            <div>
+              <span class="number">02 / SHARE</span>
+
+              <h3>Educación</h3>
+
+              <p>
+                Me gusta enseñar programación y tecnología de una manera
+                práctica, accesible y enfocada en crear cosas reales.
+              </p>
+            </div>
+          </article>
+
+          <article class="panel experience-card">
+            <div>
+              <span class="number">03 / EXPLORE</span>
+
+              <h3>Innovación</h3>
+
+              <p>
+                Constantemente exploro inteligencia artificial,
+                desarrollo de software, negocios y nuevas tecnologías.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="contacto">
+      <div class="container">
+
+        <div class="cta">
+
+          <h2>
+            Siempre hay algo nuevo
+            <span class="gradient-text">por construir.</span>
+          </h2>
+
+          <p>
+            Me interesa colaborar en proyectos de tecnología,
+            automatización, software, educación e innovación.
+          </p>
+
+          <div class="hero-actions" style="justify-content: center;">
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              GitHub
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+        © 2026 Luis Arturo Pérez
+      </div>
+
+      <div>
+        Built with HTML + CSS · Hosted with GitHub Pages
+      </div>
+
+    </div>
+  </footer>
+
+</body>
 </html>
+```
